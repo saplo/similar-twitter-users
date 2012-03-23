@@ -5,11 +5,10 @@ require_once 'libraries/Saplo.php';
 /*
  * Create a Saplo collection where tweets can be stored.
  */
-
-$saplo = new Saplo(API_KEY, SECRET_KEY);
-
 try
 {
+	$saplo = new Saplo(API_KEY, SECRET_KEY);
+	
 	$params = array(
 		'name'     => 'My Tweet Collection',
 		'language' => 'en'
@@ -21,19 +20,19 @@ try
 }
 catch (SaploException $e)
 {
-	echo "<p>Saplo API error</p>";
-	echo "<p>Code: " . $e->getCode() . "</p>";
-	echo "<p>Message: " . $e->getMessage() . "</p>";
+	echo "<h2>Saplo API error</h2>";
+	echo "Code: " . $e->getCode() . "<br />";
+	echo "Message: " . $e->getMessage();
 	
 	if ($e->getCode() == 1203)
 	{
 		$response = $saplo->request('collection.list', array(), 'collections');
 		
-		echo "<p>List of collecions owned by this API account:</p>";
+		echo "<h2>List of collecions owned by this API account:</h2>";
 				
 		foreach ($response as $collection)
 		{
-			echo $collection['collection_id'] . " (" . $collection['collection_name'] . ")";
+			echo $collection['collection_id'] . " (" . $collection['name'] . ")<br />";
 		}
 	}
 }
