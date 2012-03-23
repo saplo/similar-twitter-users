@@ -27,3 +27,8 @@ define('NBR_OF_TWEETS', 20);
  * Turn on/off debugging
  */
 define('DEBUG_ON', false);
+
+/*
+ * Set default timezone
+ */
+date_default_timezone_set('UTC');
