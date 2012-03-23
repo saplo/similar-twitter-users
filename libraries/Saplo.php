@@ -1,4 +1,6 @@
 <?php
+require_once 'Debug.php';
+
 /**
  * Saplo API
  * 
